@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css"
+	href="/APM/plugin/jquery_ligerUI_1.1/skins/Aqua/css/ligerui-all.css" />
+<link rel="stylesheet" type="text/css"
+	href="/APM/plugin/jquery-ui-1.8.16/themes/base/jquery.ui.theme.css">
+<link rel="stylesheet" type="text/css"
+	href="/APM/plugin/jquery-ui-1.8.16/themes/base/jquery.ui.button.css">
+<link rel="stylesheet" type="text/css" href="/APM/page/css/common.css" />
+<link rel="stylesheet" type="text/css" href="/APM/page/css/layout.css" />
+<link rel="stylesheet" type="text/css" href="/APM/page/css/table.css" />
+<script language="javascript" type="text/javascript"
+	src="/APM/plugin/jquery/jquery-1.7.1.min.js"></script>
+<script language="javascript" type="text/javascript"
+	src="/APM/plugin/json/json2.min.js"></script>
+<script language="javascript" type="text/javascript"
+	src="/APM/plugin/jquery_ligerUI_1.1/js/ligerui.min.js"></script>
+<script language="javascript" type="text/javascript"
+	src="/APM/plugin/jquery_ligerUI_1.1/js/plugins/ligerGrid.js"></script>
+<script language="javascript" type="text/javascript"
+	src="/APM/plugin/jquery_ligerUI_1.1/js/plugins/ligerDateEditor.js"></script>
+<script language="javascript" type="text/javascript"
+	src="/APM/plugin/jquery_ligerUI_1.1/js/plugins/ligerForm.js"></script>
+<script type="text/javascript" language="javascript"
+	src="/APM/plugin/jquery-ui-1.8.16/ui/jquery-ui-1.8.16.custom.js"></script>
+<script language="javascript" type="text/javascript"
+	src="/APM/plugin/jquery-validation/jquery.validate.min.js"></script>
+<script language="javascript" type="text/javascript"
+	src="/APM/plugin/jquery-validation/jquery.metadata.js"></script>
+<script language="javascript" type="text/javascript"
+	src="/APM/plugin/jquery-validation/messages_cn.js"></script>
+<script type="text/javascript" language="javascript"
+	src="/APM/page/js/common/common.js"></script>
+<script type="text/javascript" language="javascript"
+	src="/APM/page/js/common/message.js"></script>
+<script language="javascript" type="text/javascript"
+	src="/APM/page/js/util/tips.js"></script>
+<script type="text/javascript">var serverName = '192.168.133.48';var serverPort = '8080';var contextPath = '/APM';/**扩展jQuery的错误处理*/;(function($){    var ajax=$.ajax;    $.ajax=function(s){        var old=s.error;        s.error=function(xhr,status,err){            var resStatus = xhr.status;            var resText = xhr.responseText;            if (resStatus == '300') {//未登录                window.top.location = '/APM/page/jsp/login.jsp';            } else {                old(xhr,status,err);            }        };        ajax(s);    };})(jQuery);/*判断是否IE6*/function IsIE6(){	var isIE=!!window.ActiveXObject; 	var isIE6=isIE&&!window.XMLHttpRequest;	return isIE6;}//屏蔽IE 右键菜单// $(document).bind("contextmenu",function(){// 	 return false;// 	 });   </script>
+</head>
+<body></body>
+</html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script language="javascript" type="text/javascript"
+	src="/APM/page/js/util/md5.js"></script>
+<title>全省公安视频信息共享平台运行监管系统审计网关</title>
+<style type="text/css">
+html, body {
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	min-height: 200px;
+	text-align: center;
+	min-width: 402px;
+	background-image: url('/APM/page/image/system/faceBack.jpg');
+}
+
+.backDIV {
+	margin-top: -200px; /* SecondDIV高度的一半  */
+	float: left;
+	width: 100%;
+	height: 50%;
+}
+
+.loginDIV {
+	clear: both;
+	margin-left: auto;
+	overflow: auto;
+	width: 642px;
+	margin-right: auto;
+	height: 382px;
+	text-align: left
+}
+</style>
+<script type="text/javascript" language="javascript">// 在顶层显示登陆页面if(window.top != window)	window.top.location = '/APM/page/jsp/login.jsp';	// 监听回车事件document.onkeydown = function(e){ 	var ev = document.all ? window.event : e; 	if(ev.keyCode==13) { 		doSubmit(); 	} };// 登陆function doSubmit(){	$("#password").val(hex_md5($("#psw").val()));	$("#loginForm").submit();}$(document).ready(function() {	$("#loginForm").ligerForm();	$("#btnLogin").click(doSubmit);    $("#loginName").focus();});</script>
+</head>
+<body>
+	<div class="backDIV"></div>
+	<form action="/APM/common/loginAction!doLogin.do" id="loginForm"
+		method="post">
+		<div class="loginDIV">
+			<div>
+				<img src="/APM/page/image/system/logo.png" />
+			</div>
+			<div
+				style="width: 642px; height: 292px; background-image: url('/APM/page/image/system/login.jpg')">
+				<div style="padding-left: 100px; padding-top: 98px;">
+					<input type="text" name="loginName" value="" id="loginName"
+						style="width: 120px" />
+				</div>
+				<div style="padding-left: 100px; padding-top: 18px;">
+					<input type="password" name="psw" id="psw" style="width: 120px" />
+				</div>
+				<div style="padding-left: 320px; padding-top: 8px;">全省公安视频信息共享平台运行监管系统审计网关</div>
+				<div style="padding-left: 40px;; color: red"></div>
+				<div style="padding-left: 80px; padding-top: 20px;">
+					<img id="btnLogin" style="cursor: pointer;"
+						src="/APM/page/image/system/dl.jpg" />
+				</div>
+			</div>
+			<div style="">Copyright ©2000-2013 ZheJiangGuangXinHeChen CO.,
+				LTD. All rights reserved.</div>
+		</div>
+		<input type="hidden" name="password" value="" id="password" />
+	</form>
+</body>
+</html>
