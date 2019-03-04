@@ -20,19 +20,19 @@ public class JoinTester02 implements Runnable {
 
 	public void run() {
 		synchronized (thread) {
-			System.out.println("getObjectLock");
+			System.out.println(Thread.currentThread().getName()+"getObjectLock");
 			try {
 				Thread.sleep(9000);
 			} catch (InterruptedException ex) {
 				ex.printStackTrace();
 			}
-			System.out.println("ReleaseObjectLock");
+			System.out.println(Thread.currentThread().getName()+"ReleaseObjectLock");
 		}
 	}
 
 	public static void main(String[] args) {
 		Thread thread = new Thread(new JoinTester01("Three"));
-		Thread getLockThread = new Thread(new JoinTester02(thread));
+		Thread getLockThread = new Thread(new JoinTester02(thread),"LockThread");
 
 		getLockThread.start();
 		thread.start();
