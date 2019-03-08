@@ -1,15 +1,10 @@
 package a.b;
 
+import org.junit.Test;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
-import org.junit.Test;
+import java.util.*;
 /**
  * 测试一下
  * @author Administrator
@@ -83,5 +78,19 @@ public class test {
 	    }catch (Exception e)
 	    {
 	    }
+	}
+}
+class User {
+	private static int userNumber  = 0 ;
+
+	public User(){
+		userNumber ++;
+	}
+
+	public static void main(String[] args) {
+		User user1 = new User();
+		User user2 = new User();
+		System.out.println("user1 userNumber：" + User.userNumber);
+		System.out.println("user2 userNumber：" + User.userNumber);
 	}
 }

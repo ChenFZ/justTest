@@ -47,6 +47,7 @@ public class ProducerAndConsumer_ReentrantLock {
 					while (count == full) {
 						try {
 							System.out.println(Thread.currentThread().getName() + "----生产者停止生产，目前总共有" + count);
+							// 使用LockSupport.park(this)实现;
 							notFull.await();
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block

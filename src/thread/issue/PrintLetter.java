@@ -32,6 +32,7 @@ public class PrintLetter {
 //			if (!file.exists()) {
 //				file.createNewFile();
 //			}
+			
 			boolean b = CreateFileUtil.createFile(filePath+"file"+currentNum+".txt");
 			File dir = new File(filePath);
 			File file = new File(dir,"file"+currentNum+".txt");

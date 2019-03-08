@@ -12,3 +12,10 @@ public enum EnumSingleton {
 		System.out.println("执行dosomething方法："+s);
 	}
 }
+
+class TestSingleton{
+	public static void main(String[] args) {
+		EnumSingleton instance = EnumSingleton.INSTANCE;
+		instance.doSomething("hhaah");
+	}
+}

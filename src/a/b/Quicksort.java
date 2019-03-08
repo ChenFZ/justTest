@@ -24,23 +24,26 @@ public class Quicksort {
 		quicksort(s,0,s.length-1);
 		System.out.println(Arrays.toString(s));
 	}
-	public static void quicksort(int[] s, int l, int r) {
-		if (l < r) {
-			int i = l;
-			int j = r;
-			int x = s[l];
-			while (i < j) {
-				while (i < j && s[j] >= x) 
-					j--;
-				if (i < j) s[i++] = s[j];
-				
-				while (i < j && s[i] <= x) 
-					i++;
-				if (i < j) s[j--] = s[i];
+	public static void quicksort(int[] a, int l, int r) {
+		/**
+		 * 功能描述: <br>
+		 * 1.i = l , j = r, x = a[i]
+		 * 2. j-- ,找到a[j]<x ,a[i++] = a [j]
+		 * 3. i++,找到a[i]>x ,a[j--] = a[i]
+		 * 4. a[i] = x
+		 */
+		if (l<r){
+			int i = l,j = r, x = a[i];
+			while (i<j){
+				while (i<j&&a[j]>=x) j--;
+				if (i<j) a[i++] = a[j];
+				while (i<j&&a[i]<=x) i++;
+				if (i<j) a[j--] = a[i];
 			}
-			s[i] = x;
-			quicksort(s, l, i - 1);
-			quicksort(s, j + 1, r);
+			a[i] = x;
+			quicksort(a,l,i-1);
+			quicksort(a,i+1,r);
 		}
+
 	}
 }
