@@ -1,28 +1,40 @@
 package a.stream;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
+import java.util.Arrays;
 
 public class demo {
 	public static void main(String[] args) {
-		copyByteStream();
+		String s = "hello_安卓";
+		byte[] bytes = null;
+		try {
+			bytes = s.getBytes("gbk");
+			new String(bytes,"utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+//		copyByteStream();
 		copyCharStream();
 	}
 
 	private static void copyCharStream() {
 		try {
-			FileReader reader = new FileReader(new File("C:/Users/陈方正/Desktop/测试/bulu.txt"));
-			FileWriter writer = new FileWriter(new File("C:/Users/陈方正/Desktop/测试/copyCharStream.txt"));
-			BufferedReader bufferedReader = new BufferedReader(reader);
-			String len;
-			while((len=bufferedReader.readLine())!=null){
-				writer.write(len);
-				System.out.println(len);
+			FileReader reader = new FileReader(new File("C:/Users/chenfz/Desktop/测试/bulu.txt"));
+			File file = new File("C:/Users/chenfz/Desktop/测试/copyCharStream.txt");
+			if (!file.exists()) file.createNewFile();
+			FileWriter writer = new FileWriter(file);
+			char[] chars = new char[1024];
+			int len = 0;
+			while ((len = reader.read(chars))>-1){
+				writer.write(chars,0,len);
+				System.out.println(chars);
 			}
+//			BufferedReader bufferedReader = new BufferedReader(reader);
+//			String len;
+//			while((len=bufferedReader.readLine())!=null){
+//				writer.write(len);
+//				System.out.println(len);
+//			}
 			reader.close();
 			writer.close();
 		} catch (Exception e) {
@@ -33,8 +45,8 @@ public class demo {
 
 	private static void copyByteStream() {
 		try {
-			FileInputStream in = new FileInputStream(new File("C:/Users/陈方正/Desktop/测试/bulu.txt"));
-			FileOutputStream out = new FileOutputStream(new File("C:/Users/陈方正/Desktop/测试/copyByteStream.txt"));
+			FileInputStream in = new FileInputStream(new File("C:/Users/chenfz/Desktop/测试/bulu.txt"));
+			FileOutputStream out = new FileOutputStream(new File("C:/Users/chenfz/Desktop/测试/copyByteStream.txt"));
 			byte[] b = new byte[1024];
 			int i;
 			while ((i = in.read(b)) > 0) {

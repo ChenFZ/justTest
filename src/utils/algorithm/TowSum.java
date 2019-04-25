@@ -16,16 +16,17 @@ import java.util.HashMap;
 public class TowSum {
 	public static void main(String[] args) {
 		int[] nums = {2, 6, 7, 15};
-		System.out.println(Arrays.toString(towSum(nums, 9)));
+		System.out.println(Arrays.toString(towSum(nums, 8)));
 	}
 	
 	public static int[] towSum(int[] nums,int target){
 		int[] arr = new int[2];
 		HashMap<Integer,Integer> map = new HashMap<Integer, Integer>();
-		for (int i = 0; i < nums.length; i++) {
+			for (int i = 0; i < nums.length; i++) {
 			if (map.containsKey(nums[i])) {
 				arr[1] = i;
 				arr[0] = map.get(nums[i]);
+				return arr;
 			}
 			map.put(target - nums[i], i);
 		}

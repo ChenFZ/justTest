@@ -33,7 +33,7 @@ public class PrintLetter {
 //				file.createNewFile();
 //			}
 			
-			boolean b = CreateFileUtil.createFile(filePath+"file"+currentNum+".txt");
+			boolean b = CreateFileUtil.createFile(filePath+"/file"+currentNum+".txt");
 			File dir = new File(filePath);
 			File file = new File(dir,"file"+currentNum+".txt");
 			FileWriter writer = new FileWriter(file);
